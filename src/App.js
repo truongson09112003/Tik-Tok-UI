@@ -1,12 +1,40 @@
-
+import { Fragment } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { publicRoutes } from '@/routes';
+import { DefaultLayout } from '@/components/Layout';
 
 function App() {
-  return (
-    <div className="App">
-      <h1>Hello</h1>
-      <p>Quy định chi tiết và biện pháp thi hành Nghị quyết số 12/2021/UBTVQH15 ngày 30 tháng 12 năm 2021 của Ủy ban Thường vụ Quốc hội về việc cho phép thực hiện một số cơ chế, chính sách trong lĩnh vực y tế để phục vụ công tác phòng, chống dịch COVID-19</p>
-    </div>
-  );
+    return (
+        <Router>
+            <div className="App">
+                <Routes>
+                    {publicRoutes.map((route, index) => {
+                        const Page = route.component;
+
+                        let Layout = DefaultLayout;
+
+                        if (route.layout) {
+                            Layout = route.layout;
+                        } else if (route.layout === null) {
+                            Layout = Fragment;
+                        }
+
+                        return (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={
+                                    <Layout>
+                                        <Page />
+                                    </Layout>
+                                }
+                            />
+                        );
+                    })}
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;

@@ -19,6 +19,10 @@ function App() {
                             Layout = Fragment;
                         }
 
+                        function handleChange(path) {
+                            console.log('path: ', path);
+                        }
+
                         return (
                             <Route
                                 key={index}

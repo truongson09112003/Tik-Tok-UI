@@ -1,8 +1,14 @@
 :root {
     --primary: #fe2c55;
-
+    --black: rgb(22, 24, 35);
+    --text-color: #333;
     // width height layouts
     --default-layout-header-height: 60px;
     --default-layout-width: 1150px;
     --default-layout-slide: 356px;
+}
+
+a[href] {
+    text-decoration: none;
+    color: var(--text-color);
 }

@@ -11,24 +11,29 @@ const publicRoutes = [
     {
         path: '/',
         component: Home,
+        id: '/',
     },
     {
         path: '/following',
         component: Following,
+        id: '/following',
     },
     {
         path: '/profile',
         component: Profile,
+        id: '/profile',
     },
     {
         path: '/upload',
         component: Upload,
         layout: HeaderOnly,
+        id: '/upload',
     },
     {
         path: '/search',
         component: Search,
         layout: undefined,
+        id: '/search',
     },
 ];
 const privateRoutes = [];

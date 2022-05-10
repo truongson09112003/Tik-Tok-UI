@@ -16,6 +16,10 @@
     align-items: center;
     justify-content: space-between;
 }
+.search,
+.search-result {
+    width: 363px;
+}
 
 .search {
     padding: 0 0 0 16px;
@@ -25,7 +29,7 @@
     display: flex;
     overflow-y: hidden;
     position: relative;
-    height: 46px;
+    height: 42px;
     border: 1.5px solid transparent;
 
     input {
@@ -99,4 +103,14 @@
     &:active {
         background-color: rgba(22, 24, 35, 0.06);
     }
+}
+
+.search-account-title {
+    height: 30px;
+    padding: 5px 12px;
+    font-size: 1.4rem;
+    line-height: 20px;
+    font-weight: 600;
+    color: rgba(22, 24, 35, 0.5);
+    cursor: default;
 }

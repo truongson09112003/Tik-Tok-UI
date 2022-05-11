@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faSpinner, faMagnifyingGlass, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 
+import Button from '@/components/Button';
 import styles from './Header.module.scss';
 import images from '@/assets/img';
-import { Wrapper as PopperWrapper } from '@/components/Popper';
+import { Wrapper as PopperWrapper, Menu } from '@/components/Popper';
 import AccountItem from '@/components/AccountItem';
 
 const cx = classNames.bind(styles);
@@ -35,7 +36,7 @@ function Header() {
                     )}
                 >
                     <div className={cx('search')}>
-                        <input placeholder="Tìm kiếm tài khoản và video" spellCheck={false} />
+                        <input placeholder="Search accounts and videos" spellCheck={false} />
                         <button className={cx('clear')}>
                             <FontAwesomeIcon icon={faCircleXmark} />
                         </button>
@@ -52,7 +53,22 @@ function Header() {
                     </div>
                 </Tippy>
                 <div className={cx('actions')}>
-                    <h5>Upload</h5>
+                    <Button text to="/upload">
+                        Upload
+                    </Button>
+                    <Button
+                        primary
+                        onClick={() => {
+                            console.log('test');
+                        }}
+                    >
+                        Log in
+                    </Button>
+                    <Menu>
+                        <button className={cx('more-btn')}>
+                            <FontAwesomeIcon className={cx('icon-login')} icon={faEllipsisVertical} />
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </header>

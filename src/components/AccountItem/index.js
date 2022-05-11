@@ -4,8 +4,6 @@ import img from '@/assets/img';
 
 const cx = classNames.bind(styles);
 
-console.log(img.check);
-
 function AccountItem() {
     return (
         <div className={cx('wrapper')}>

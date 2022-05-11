@@ -1,7 +1,9 @@
 :root {
     --primary: #fe2c55;
     --black: rgb(22, 24, 35);
-    --text-color: #333;
+    --text-color: rgb(22, 24, 35);
+    --primary-color: rgba(254, 44, 85, 1);
+    --white-color: rgba(255, 255, 255, 1);
     // width height layouts
     --default-layout-header-height: 60px;
     --default-layout-width: 1150px;

@@ -8,6 +8,7 @@
     width: var(--default-layout-width);
     height: 1000px;
     display: flex;
+    padding: 0 var(--default-layout-horizontal-spacer);
 }
 
 .content {

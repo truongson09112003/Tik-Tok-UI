@@ -15,6 +15,7 @@ function Button({
     to,
     href,
     children,
+    custom,
     onClick,
     ...propsAdd
 }) {
@@ -54,7 +55,7 @@ function Button({
 
     return (
         <Component className={clases} {...props}>
-            <span>{children}</span>
+            <span className={cx(custom)}>{children}</span>
         </Component>
     );
 }

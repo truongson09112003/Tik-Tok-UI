@@ -2,13 +2,16 @@ import { useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faSpinner, faMagnifyingGlass, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react/headless';
+import HeadlessTippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css'; // optional
 
 import Button from '@/components/Button';
 import styles from './Header.module.scss';
 import images from '@/assets/img';
 import { Wrapper as PopperWrapper, Menu } from '@/components/Popper';
 import AccountItem from '@/components/AccountItem';
+import avatar from '@/assets/img/avata.JPG';
 
 const cx = classNames.bind(styles);
 
@@ -16,6 +19,21 @@ const MenuItem = [
     {
         icon: <img src={images.language} alt="LG" />,
         title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'language',
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vie',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+            ],
+        },
     },
     {
         icon: <img src={images.faqs} alt="LFAQ" />,
@@ -28,8 +46,15 @@ const MenuItem = [
     },
 ];
 
+const currentUser = true;
+
 function Header() {
     const [searchResults, setSearchResults] = useState([]);
+
+    // handle logic
+    function handleMenuChange(menuItem) {
+        console.log(menuItem);
+    }
 
     return (
         <header className={cx('wrapper')}>
@@ -37,7 +62,7 @@ function Header() {
                 <div className={cx('logo')}>
                     <img src={images.logo} alt="Có lỗi xảy ra với API" />
                 </div>
-                <Tippy
+                <HeadlessTippy
                     interactive
                     visible={searchResults.length > 0}
                     render={(attrs) => (
@@ -67,23 +92,50 @@ function Header() {
                             </svg>
                         </button>
                     </div>
-                </Tippy>
+                </HeadlessTippy>
                 <div className={cx('actions')}>
-                    <Button text to="/upload">
-                        Upload
-                    </Button>
-                    <Button
-                        primary
-                        onClick={() => {
-                            console.log('test');
-                        }}
-                    >
-                        Log in
-                    </Button>
-                    <Menu items={MenuItem}>
-                        <button className={cx('more-btn')}>
-                            <FontAwesomeIcon className={cx('icon-login')} icon={faEllipsisVertical} />
-                        </button>
+                    {currentUser ? (
+                        <>
+                            <Tippy content="Upload video" placement="bottom">
+                                <button className={cx('btn-currentUser')}>
+                                    <img className={cx('img-btn-user')} src={images.upload} />
+                                </button>
+                            </Tippy>
+                            <Tippy content="Message" placement="bottom">
+                                <button className={cx('btn-currentUser', 'btn-currentUser-2')}>
+                                    <img className={cx('img-btn-user')} src={images.message} />
+                                </button>
+                            </Tippy>
+                            <Tippy content="Inbox" placement="bottom">
+                                <button className={cx('btn-currentUser')}>
+                                    <img className={cx('img-btn-user')} src={images.maill} />
+                                </button>
+                            </Tippy>
+                        </>
+                    ) : (
+                        <>
+                            <Button text to="/upload">
+                                Upload
+                            </Button>
+                            <Button
+                                primary
+                                onClick={() => {
+                                    console.log('test');
+                                }}
+                            >
+                                Log in
+                            </Button>
+                        </>
+                    )}
+                    <Menu items={MenuItem} onChange={handleMenuChange}>
+                        {currentUser ? (
+                            <div className={cx('user-avatar')} style={{ backgroundImage: `url(${avatar})` }}></div>
+                        ) : (
+                            // <img src={avatar} alt="Nguyễn Trường Sơn" className={cx('user-avatar')} />
+                            <button className={cx('more-btn')}>
+                                <FontAwesomeIcon className={cx('icon-login')} icon={faEllipsisVertical} />
+                            </button>
+                        )}
                     </Menu>
                 </div>
             </div>

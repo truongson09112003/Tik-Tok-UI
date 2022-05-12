@@ -15,6 +15,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 var(--default-layout-horizontal-spacer);
 }
 .search,
 .search-result {
@@ -29,7 +30,7 @@
     display: flex;
     overflow-y: hidden;
     position: relative;
-    height: 42px;
+    height: 46px;
     border: 1.5px solid transparent;
 
     input {
@@ -128,6 +129,47 @@
     height: 20px;
     padding: 0 4px;
 
+    cursor: pointer;
+}
+
+// actions
+
+.actions {
+    display: flex;
+    align-items: center;
+}
+
+.btn-currentUser {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+
+    + .btn-currentUser {
+        margin-left: 16px;
+    }
+}
+
+.btn-currentUser-2 {
+    width: 25px;
+}
+
+.img-btn-user {
+    width: 100%;
+    height: 100%;
+}
+
+.user-avatar {
+    margin-left: 24px;
+    position: relative;
+    width: 32px;
+    height: 32px;
+    background: center no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    border-radius: 50%;
     cursor: pointer;
 }
 

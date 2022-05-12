@@ -3,6 +3,7 @@
 .content {
     width: 223px;
     height: 142px;
+    margin-top: 2px;
 }
 
 .menu-item {
@@ -11,6 +12,11 @@
     cursor: pointer;
     padding: 10px 16px;
     height: 42px;
+    cursor: default;
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
 }
 
 .menu-span {
@@ -21,7 +27,7 @@
     flex: 0 0 20px;
 }
 
-.spanised {
+.button-menu {
     border: none;
     outline: none;
     background-color: transparent;

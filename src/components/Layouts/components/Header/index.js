@@ -16,7 +16,6 @@ const MenuItem = [
     {
         icon: <img src={images.language} alt="LG" />,
         title: 'English',
-        check: 'check',
     },
     {
         icon: <img src={images.faqs} alt="LFAQ" />,

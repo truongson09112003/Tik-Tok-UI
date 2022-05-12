@@ -15,19 +15,10 @@ function MenuItem({ data }) {
         Component = Link;
         props.to = data.to;
     }
-    if (data.check === 'check') {
-        Test = true;
-    }
     return (
         <Component {...props} className={cx('menu-item')}>
             <span className={cx('menu-span')}>{data.icon}</span>
-            <Button
-                className={cx({
-                    spanised: { Test },
-                })}
-            >
-                {data.title}
-            </Button>
+            <Button className={cx('button-menu')}>{data.title}</Button>
         </Component>
     );
 }

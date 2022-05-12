@@ -12,6 +12,23 @@ import AccountItem from '@/components/AccountItem';
 
 const cx = classNames.bind(styles);
 
+const MenuItem = [
+    {
+        icon: <img src={images.language} alt="LG" />,
+        title: 'English',
+        check: 'check',
+    },
+    {
+        icon: <img src={images.faqs} alt="LFAQ" />,
+        title: 'Feedback and help',
+        to: '/feedback',
+    },
+    {
+        icon: <img src={images.keyboard} alt="BS" />,
+        title: 'Keyboard shortcuts',
+    },
+];
+
 function Header() {
     const [searchResults, setSearchResults] = useState([]);
 
@@ -64,7 +81,7 @@ function Header() {
                     >
                         Log in
                     </Button>
-                    <Menu>
+                    <Menu items={MenuItem}>
                         <button className={cx('more-btn')}>
                             <FontAwesomeIcon className={cx('icon-login')} icon={faEllipsisVertical} />
                         </button>

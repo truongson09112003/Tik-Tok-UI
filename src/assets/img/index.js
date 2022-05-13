@@ -13,6 +13,7 @@ const images = {
     coins: require('@/assets/img/coins.svg').default,
     settings: require('@/assets/img/settings.svg').default,
     logout: require('@/assets/img/logout.svg').default,
+    Noimg: require('@/assets/img/noimg.png'),
 };
 
 export default images;

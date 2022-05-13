@@ -1,6 +1,4 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600&family=Source+Serif+Pro:ital,wght@0,200;0,400;1,200&display=swap');
 
 * {
     box-sizing: border-box;
@@ -9,16 +7,41 @@
 }
 
 html {
-    // font-family: "Montserrat", sans-serif;
-    font-family: 'Manrope', sans-serif;
     font-size: 62.5%;
+    font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
 }
 
 body {
+    font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed; // tối ưu sao để hiển thị nhanh nhất khi rendering
     color: var(--text-color);
+}
+
+// Fonts emmbeded
+@font-face {
+    font-family: ProximaNova;
+    src: url('/assets/fonts/Proxima-Nova-Regular.woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: ProximaNova;
+    src: url('/assets/fonts/ProximaNova-Semibold.woff2');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: ProximaNova;
+    src: url('/assets/fonts/Proxima-Nova-Bold.woff');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: SofiaPro;
+    src: url('/assets/fonts/sofiapro-bold.woff');
+    font-weight: 700;
 }
 
 body {

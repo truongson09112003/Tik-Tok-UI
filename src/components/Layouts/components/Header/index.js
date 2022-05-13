@@ -12,7 +12,10 @@ import styles from './Header.module.scss';
 import images from '@/assets/img';
 import { Wrapper as PopperWrapper, Menu } from '@/components/Popper';
 import AccountItem from '@/components/AccountItem';
-import avatar from '@/assets/img/avata.JPG';
+import avatar from '@/assets/img/images.jpg';
+import { UploadIcon, MessageIcon } from '@/components/Icons';
+import Search from '../Search';
+import Image from '@/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -48,8 +51,6 @@ const MenuItem = [
 ];
 
 function Header() {
-    const [searchResults, setSearchResults] = useState([]);
-
     // user login
     const currentUser = true;
 
@@ -80,7 +81,7 @@ function Header() {
             icon: <img src={images.logout} alt="LFAQ" />,
             title: 'Log out',
             to: '/logout',
-            separate: true,
+            separate: 'HT',
         },
     ];
 
@@ -92,48 +93,18 @@ function Header() {
                         <img src={images.logo} alt="Có lỗi xảy ra với API" />
                     </Link>
                 </div>
-                <HeadlessTippy
-                    interactive
-                    visible={searchResults.length > 0}
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper>
-                                <h4 className={cx('search-account-title')}>Tài khoản </h4>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input placeholder="Search accounts and videos" spellCheck={false} />
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-                        <button className={cx('search-btn')}>
-                            <svg width="24" height="24" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    fillRule="evenodd"
-                                    clipRule="evenodd"
-                                    d="M22 10C15.3726 10 10 15.3726 10 22C10 28.6274 15.3726 34 22 34C28.6274 34 34 28.6274 34 22C34 15.3726 28.6274 10 22 10ZM6 22C6 13.1634 13.1634 6 22 6C30.8366 6 38 13.1634 38 22C38 25.6974 36.7458 29.1019 34.6397 31.8113L43.3809 40.5565C43.7712 40.947 43.7712 41.5801 43.3807 41.9705L41.9665 43.3847C41.5759 43.7753 40.9426 43.7752 40.5521 43.3846L31.8113 34.6397C29.1019 36.7458 25.6974 38 22 38C13.1634 38 6 30.8366 6 22Z"
-                                ></path>
-                            </svg>
-                        </button>
-                    </div>
-                </HeadlessTippy>
+                <Search />
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
                             <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
                                 <button className={cx('btn-currentUser')}>
-                                    <img className={cx('img-btn-user')} src={images.upload} />
+                                    <UploadIcon className="Upload" />
                                 </button>
                             </Tippy>
                             <Tippy delay={[0, 200]} content="Message" placement="bottom">
                                 <button className={cx('btn-currentUser', 'btn-currentUser-2')}>
-                                    <img className={cx('img-btn-user')} src={images.message} />
+                                    <MessageIcon />
                                 </button>
                             </Tippy>
                             <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
@@ -159,9 +130,14 @@ function Header() {
                     )}
                     <Menu items={currentUser ? userMenu : MenuItem} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <div className={cx('user-avatar')} style={{ backgroundImage: `url(${avatar})` }}></div>
+                            // <Image className={cx('user-avatar')}></Image>
+                            <Image
+                                src="https://lh5.googleusercontent.com/QolZv_6CsQodma6fxqR98DM5Udtj7uY3cx23LcY2LxJYnrbVYNVVO6HDimuWrE2mxN4AaHya7YGLpB_Q9u7S=w1920-h928-rw"
+                                alt="Nguyễn Trường Sơn"
+                                className={cx('user-avatar')}
+                                fallback="https://gcdnb.pbrd.co/images/r39nV6NMtqjW.jpg"
+                            />
                         ) : (
-                            // <img src={avatar} alt="Nguyễn Trường Sơn" className={cx('user-avatar')} />
                             <button className={cx('more-btn')}>
                                 <FontAwesomeIcon className={cx('icon-login')} icon={faEllipsisVertical} />
                             </button>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faSpinner, faMagnifyingGlass, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
@@ -46,21 +47,50 @@ const MenuItem = [
     },
 ];
 
-const currentUser = true;
-
 function Header() {
     const [searchResults, setSearchResults] = useState([]);
+
+    // user login
+    const currentUser = true;
 
     // handle logic
     function handleMenuChange(menuItem) {
         console.log(menuItem);
     }
 
+    // when user login
+    const userMenu = [
+        {
+            icon: <img src={images.user} alt="LFAQ" />,
+            title: 'View profile',
+            to: '/profile',
+        },
+        {
+            icon: <img src={images.coins} alt="LFAQ" />,
+            title: 'Get coins',
+            to: '/coin',
+        },
+        {
+            icon: <img src={images.settings} alt="LFAQ" />,
+            title: 'Settings',
+            to: '/setting',
+        },
+        ...MenuItem,
+        {
+            icon: <img src={images.logout} alt="LFAQ" />,
+            title: 'Log out',
+            to: '/logout',
+            separate: true,
+        },
+    ];
+
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="Có lỗi xảy ra với API" />
+                    <Link to="/">
+                        <img src={images.logo} alt="Có lỗi xảy ra với API" />
+                    </Link>
                 </div>
                 <HeadlessTippy
                     interactive
@@ -96,17 +126,17 @@ function Header() {
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
-                            <Tippy content="Upload video" placement="bottom">
+                            <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
                                 <button className={cx('btn-currentUser')}>
                                     <img className={cx('img-btn-user')} src={images.upload} />
                                 </button>
                             </Tippy>
-                            <Tippy content="Message" placement="bottom">
+                            <Tippy delay={[0, 200]} content="Message" placement="bottom">
                                 <button className={cx('btn-currentUser', 'btn-currentUser-2')}>
                                     <img className={cx('img-btn-user')} src={images.message} />
                                 </button>
                             </Tippy>
-                            <Tippy content="Inbox" placement="bottom">
+                            <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
                                 <button className={cx('btn-currentUser')}>
                                     <img className={cx('img-btn-user')} src={images.maill} />
                                 </button>
@@ -127,7 +157,7 @@ function Header() {
                             </Button>
                         </>
                     )}
-                    <Menu items={MenuItem} onChange={handleMenuChange}>
+                    <Menu items={currentUser ? userMenu : MenuItem} onChange={handleMenuChange}>
                         {currentUser ? (
                             <div className={cx('user-avatar')} style={{ backgroundImage: `url(${avatar})` }}></div>
                         ) : (

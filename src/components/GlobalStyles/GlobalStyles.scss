@@ -20,3 +20,24 @@ body {
     text-rendering: optimizeSpeed; // tối ưu sao để hiển thị nhanh nhất khi rendering
     color: var(--text-color);
 }
+
+body {
+    .tippy-box {
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+        background-color: rgba(84, 84, 84, 0.92);
+        color: rgb(255, 255, 255);
+        padding: 3px;
+    }
+
+    .tippy-arrow {
+        color: rgba(84, 84, 84, 0.92);
+    }
+
+    .tippy-box[data-placement^='bottom'] > .tippy-arrow {
+        top: -1px;
+    }
+}

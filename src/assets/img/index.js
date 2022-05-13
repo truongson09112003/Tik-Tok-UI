@@ -9,6 +9,10 @@ const images = {
     upload: require('@/assets/img/upload.svg').default,
     message: require('@/assets/img/message.svg').default,
     maill: require('@/assets/img/maill.svg').default,
+    user: require('@/assets/img/user.svg').default,
+    coins: require('@/assets/img/coins.svg').default,
+    settings: require('@/assets/img/settings.svg').default,
+    logout: require('@/assets/img/logout.svg').default,
 };
 
 export default images;

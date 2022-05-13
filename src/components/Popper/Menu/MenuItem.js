@@ -7,7 +7,14 @@ const cx = classNames.bind(styles);
 
 function MenuItem({ data, onClick }) {
     return (
-        <Button {...data} className={cx('button-menu')} custom="menu-item" onClick={onClick}>
+        <Button
+            {...data}
+            className={cx('button-menu', {
+                separate: data.separate,
+            })}
+            custom="menu-item"
+            onClick={onClick}
+        >
             <span className={cx('menu-span')}>{data.icon}</span>
             <span>{data.title}</span>
         </Button>

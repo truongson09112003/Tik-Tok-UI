@@ -29,8 +29,12 @@
         caret-color: var(--primary);
     }
 
+    .search-btn {
+        color: rgba(22, 24, 35, 0.34);
+    }
+
     input:not(:placeholder-shown) ~ .search-btn {
-        fill: rgba(22, 24, 35, 0.75);
+        color: rgba(22, 24, 35, 0.75);
     }
 
     &::after {
@@ -54,12 +58,35 @@
     border: none;
     background-color: transparent;
     position: absolute;
+    display: flex;
+    align-items: center;
     top: 50%;
     transform: translateY(-50%);
     color: rgba(22, 24, 35, 0.34);
     right: 66px;
     svg {
         color: rgba(22, 24, 35, 0.34);
+    }
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    right: 62px;
+    // top: 10%;
+}
+
+.loading-rotate {
+    animation: Rotate linear 0.8s infinite;
+}
+
+@keyframes Rotate {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
     }
 }
 

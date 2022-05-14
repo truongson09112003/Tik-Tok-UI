@@ -2,22 +2,40 @@ import className from 'classnames/bind';
 import styles from './Search.module.scss';
 import AccountItem from '@/components/AccountItem';
 import { Wrapper as PopperWrapper, Menu } from '@/components/Popper';
-import { SearchIcon } from '../../../Icons';
+import { SearchIcon, LoadingIcon } from '../../../Icons';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faMagnifyingGlass, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 const cx = className.bind(styles);
 
 function Search() {
     const [searchResults, setSearchResults] = useState([]);
+    const [searchText, setSearchText] = useState('');
+    const [showResult, setShowResult] = useState(true);
+
+    const inputElementRef = useRef();
+
+    useEffect(() => {
+        setSearchResults([1, 2, 3]);
+    }, []);
+
+    const handleClear = () => {
+        inputElementRef.current.focus();
+        setSearchResults([]);
+        setSearchText('');
+    };
+
+    const handleHidenResult = () => {
+        setShowResult(false);
+    };
 
     return (
         <HeadlessTippy
             interactive
-            visible={searchResults.length > 0}
+            visible={showResult && searchResults.length > 0}
             render={(attrs) => (
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
@@ -28,13 +46,25 @@ function Search() {
                     </PopperWrapper>
                 </div>
             )}
+            onClickOutside={handleHidenResult}
         >
             <div className={cx('search')}>
-                <input placeholder="Search accounts and videos" spellCheck={false} />
-                <button className={cx('clear')}>
-                    <FontAwesomeIcon icon={faCircleXmark} />
-                </button>
-                <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
+                <input
+                    ref={inputElementRef}
+                    value={searchText}
+                    placeholder="Search accounts and videos"
+                    spellCheck={false}
+                    onChange={(e) => setSearchText(e.target.value)}
+                    onFocus={() => setShowResult(true)}
+                />
+                {!!searchText && (
+                    <button className={cx('clear')} onClick={handleClear}>
+                        <FontAwesomeIcon icon={faCircleXmark} />
+                    </button>
+                )}
+                {/* <div className={cx('loading')}>
+                    <LoadingIcon className={cx('loading-rotate')} />
+                </div> */}
                 <button className={cx('search-btn')}>
                     <SearchIcon />
                 </button>

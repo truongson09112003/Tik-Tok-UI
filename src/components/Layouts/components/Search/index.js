@@ -4,6 +4,7 @@ import AccountItem from '@/components/AccountItem';
 import { Wrapper as PopperWrapper, Menu } from '@/components/Popper';
 import { SearchIcon, LoadingIcon } from '../../../Icons';
 import { useDebounce } from '@/hooks';
+import * as searchService from '@/apiServices/searchServices';
 
 import { useState, useRef, useEffect } from 'react';
 import $ from 'jquery';
@@ -32,15 +33,17 @@ function Search() {
 
         setLoading(true);
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounce)}&type=less`)
-            .then((data) => data.json())
-            .then((res) => {
-                setSearchResults(res.data);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
+        const fetchApi = async () => {
+            setLoading(true);
+
+            const results = await searchService.search(debounce);
+
+            setLoading(false);
+
+            setSearchResults(results);
+        };
+
+        fetchApi();
     }, [debounce]);
 
     const handleClear = () => {
@@ -59,7 +62,7 @@ function Search() {
         if (!searchInput.startsWith(' ')) {
             setSearchText(searchInput);
         }
-    }
+    };
 
     return (
         <HeadlessTippy

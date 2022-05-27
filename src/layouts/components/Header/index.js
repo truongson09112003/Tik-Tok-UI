@@ -1,22 +1,18 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faMagnifyingGlass, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
-import HeadlessTippy from '@tippyjs/react/headless';
+import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 
 import Button from '@/components/Button';
 import styles from './Header.module.scss';
 import images from '@/assets/img';
-import { Wrapper as PopperWrapper, Menu } from '@/components/Popper';
-import AccountItem from '@/components/AccountItem';
-import avatar from '@/assets/img/images.jpg';
+import { Menu } from '@/components/Popper';
 import { UploadIcon, MessageIcon } from '@/components/Icons';
 import Search from '../Search';
 import Image from '@/components/Image';
-import routesConfig from '@/config/routes';
+import config from '@/config';
 
 const cx = classNames.bind(styles);
 
@@ -240,7 +236,7 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <Link to={routesConfig.home}>
+                    <Link to={config.routes.home}>
                         <img src={images.logo} alt="Có lỗi xảy ra với API" />
                     </Link>
                 </div>

@@ -16,6 +16,7 @@ import avatar from '@/assets/img/images.jpg';
 import { UploadIcon, MessageIcon } from '@/components/Icons';
 import Search from '../Search';
 import Image from '@/components/Image';
+import routesConfig from '@/config/routes';
 
 const cx = classNames.bind(styles);
 
@@ -89,7 +90,7 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <Link to="/">
+                    <Link to={routesConfig.home}>
                         <img src={images.logo} alt="Có lỗi xảy ra với API" />
                     </Link>
                 </div>

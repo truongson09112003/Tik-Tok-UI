@@ -33,7 +33,7 @@
     height: 42px;
     width: 100%;
     border-radius: 0;
-    font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    font-family: var(--font-family);
     cursor: pointer;
 
     &:hover {

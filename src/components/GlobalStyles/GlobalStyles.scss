@@ -8,11 +8,11 @@
 
 html {
     font-size: 62.5%;
-    font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    font-family: var(--font-family);
 }
 
 body {
-    font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    font-family: var(--font-family);
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed; // tối ưu sao để hiển thị nhanh nhất khi rendering

@@ -64,6 +64,10 @@ function Search() {
         }
     };
 
+    const handleSubmitSearch = (e) => {
+        e.preventDefault();
+    };
+
     return (
         <HeadlessTippy
             interactive
@@ -99,7 +103,7 @@ function Search() {
                         <LoadingIcon className={cx('loading-rotate')} />
                     </div>
                 )}
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onMouseDown={(e) => handleSubmitSearch(e)}>
                     <SearchIcon />
                 </button>
             </div>

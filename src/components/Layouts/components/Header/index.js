@@ -37,6 +37,156 @@ const MenuItem = [
                     code: 'vie',
                     title: 'Tiếng Việt (Việt Nam)',
                 },
+                {
+                    type: 'language',
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vie',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+                {
+                    type: 'language',
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vie',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+                {
+                    type: 'language',
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vie',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+                {
+                    type: 'language',
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vie',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+                {
+                    type: 'language',
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vie',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+                {
+                    type: 'language',
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vie',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+                {
+                    type: 'language',
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vie',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+                {
+                    type: 'language',
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vie',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+                {
+                    type: 'language',
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vie',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+                {
+                    type: 'language',
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vie',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+                {
+                    type: 'language',
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vie',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+                {
+                    type: 'language',
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vie',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+                {
+                    type: 'language',
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vie',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+                {
+                    type: 'language',
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vie',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+                {
+                    type: 'language',
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vie',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
             ],
         },
     },

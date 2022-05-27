@@ -45,18 +45,16 @@ function Menu({ items = [], children, onChange = defaultFn, hdeOnClick = false }
             render={(attrs) => (
                 <div className={cx('content')} tabIndex="-1" {...attrs}>
                     <PopperWrapper custom>
-                        <div className={cx('wrapper')}>
-                            {history.length > 1 && (
-                                <Header
-                                    title="Language"
-                                    custom
-                                    onBack={() => {
-                                        setHistory((prev) => prev.slice(0, prev.length - 1));
-                                    }}
-                                />
-                            )}
-                            {RenderItem}
-                        </div>
+                        {history.length > 1 && (
+                            <Header
+                                title="Language"
+                                custom
+                                onBack={() => {
+                                    setHistory((prev) => prev.slice(0, prev.length - 1));
+                                }}
+                            />
+                        )}
+                        <div className={cx('menu-body')}>{RenderItem}</div>
                     </PopperWrapper>
                 </div>
             )}

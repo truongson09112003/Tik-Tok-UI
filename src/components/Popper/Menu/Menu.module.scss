@@ -59,6 +59,7 @@
     align-items: center;
     position: relative;
     height: 50px;
+    flex-shrink: 0;
     margin-top: -8px;
 }
 
@@ -70,6 +71,10 @@
     margin-left: 28px;
     width: 20px;
     height: 20px;
+}
+
+.menu-body {
+    overflow-y: auto;
 }
 
 .header-title {

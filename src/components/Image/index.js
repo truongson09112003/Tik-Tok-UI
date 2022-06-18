@@ -1,11 +1,11 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { forwardRef, useState } from 'react';
 
 import styles from './Image.module.scss';
-import avatar from '@/assets/img/avatar.jpg';
 import images from '@/assets/img';
 
-function Image({ src, className, fallback: customFallback = images.Noimg, ...props }, ref) {
+const Image = forwardRef(({ src, className, fallback: customFallback = images.Noimg, ...props }, ref) => {
     const [_fallback, setFallBack] = useState('');
 
     const handleError = () => {
@@ -19,8 +19,15 @@ function Image({ src, className, fallback: customFallback = images.Noimg, ...pro
             src={_fallback || src}
             {...props}
             onError={handleError}
+            alt=""
         />
     );
-}
+});
 
-export default forwardRef(Image);
+Image.propTypes = {
+    src: PropTypes.string,
+    className: PropTypes.string,
+    fallback: PropTypes.string,
+};
+
+export default Image;

@@ -1,17 +1,23 @@
+import PropTypes from 'prop-types';
+import Tippy from '@tippyjs/react/headless';
+import { useState } from 'react';
 import classNames from 'classnames/bind';
+
 import styles from './Menu.module.scss';
 import { Wrapper as PopperWrapper } from '@/components/Popper';
 import MenuItem from './MenuItem';
 import Header from './Header';
 
-import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faMagnifyingGlass, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react/headless';
-
 const cx = classNames.bind(styles);
 
 const defaultFn = () => {};
+
+Menu.propTypes = {
+    children: PropTypes.node.isRequired,
+    items: PropTypes.array,
+    onChange: PropTypes.func,
+    hdeOnClick: PropTypes.bool,
+};
 
 function Menu({ items = [], children, onChange = defaultFn, hdeOnClick = false }) {
     const [history, setHistory] = useState([{ data: items }]);
@@ -47,7 +53,7 @@ function Menu({ items = [], children, onChange = defaultFn, hdeOnClick = false }
                     <PopperWrapper custom>
                         {history.length > 1 && (
                             <Header
-                                title="Language"
+                                title={current.title}
                                 custom
                                 onBack={() => {
                                     setHistory((prev) => prev.slice(0, prev.length - 1));

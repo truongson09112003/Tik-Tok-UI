@@ -1,4 +1,5 @@
 import className from 'classnames/bind';
+import PropTypes from 'prop-types';
 import styles from './Search.module.scss';
 import AccountItem from '@/components/AccountItem';
 import { Wrapper as PopperWrapper } from '@/components/Popper';
@@ -12,6 +13,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 const cx = className.bind(styles);
+
+Search.propTypes = {};
 
 function Search() {
     const [searchText, setSearchText] = useState('');

@@ -23,6 +23,10 @@ function Menu({ items = [], children, onChange = defaultFn, hdeOnClick = false }
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
 
+    const handleBack = () => {
+        setHistory((prev) => prev.slice(0, prev.length - 1));
+    };
+
     const RenderItem = current.data.map((item, index) => {
         const isParent = !!item.children;
 
@@ -41,6 +45,20 @@ function Menu({ items = [], children, onChange = defaultFn, hdeOnClick = false }
         );
     });
 
+    const RenderResult = (attrs) => (
+        <div className={cx('content')} tabIndex="-1" {...attrs}>
+            <PopperWrapper custom>
+                {history.length > 1 && <Header title={current.title} custom onBack={handleBack} />}
+                <div className={cx('menu-body')}>{RenderItem}</div>
+            </PopperWrapper>
+        </div>
+    );
+
+    // chuyển về menu trang đầu tiên
+    const handleResetToFirstPage = () => {
+        setHistory((prev) => prev.slice(0, 1));
+    };
+
     return (
         <Tippy
             delay={[0, 700]}
@@ -48,23 +66,8 @@ function Menu({ items = [], children, onChange = defaultFn, hdeOnClick = false }
             hideOnClick={hdeOnClick}
             interactive
             placement="bottom-end"
-            render={(attrs) => (
-                <div className={cx('content')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper custom>
-                        {history.length > 1 && (
-                            <Header
-                                title={current.title}
-                                custom
-                                onBack={() => {
-                                    setHistory((prev) => prev.slice(0, prev.length - 1));
-                                }}
-                            />
-                        )}
-                        <div className={cx('menu-body')}>{RenderItem}</div>
-                    </PopperWrapper>
-                </div>
-            )}
-            onHide={() => setHistory((prev) => prev.slice(0, 1))}
+            render={RenderResult}
+            onHide={handleResetToFirstPage}
         >
             {children}
         </Tippy>

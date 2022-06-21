@@ -69,7 +69,7 @@
     font-size: 1.4rem;
     margin-left: 16px;
     background-color: var(--primary-color);
-    color: var(--white-color);
+    color: var(--white-color) !important;
     min-height: 36px;
     border-color: var(--primary-color);
     border-width: 1px;

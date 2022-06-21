@@ -1,5 +1,4 @@
 import className from 'classnames/bind';
-import PropTypes from 'prop-types';
 import styles from './Search.module.scss';
 import AccountItem from '@/components/AccountItem';
 import { Wrapper as PopperWrapper } from '@/components/Popper';
@@ -19,16 +18,16 @@ Search.propTypes = {};
 function Search() {
     const [searchText, setSearchText] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const inputElementRef = useRef();
 
     // handle user nhap liên tục value chánh hiện tương bắn required liên tục lên máy chủ
-    const debounce = useDebounce(searchText, 500);
+    const debounceValue = useDebounce(searchText, 500);
 
     useEffect(() => {
-        if (!debounce.trim()) {
+        if (!debounceValue.trim()) {
             setSearchResults([]);
             return;
         }
@@ -38,7 +37,7 @@ function Search() {
         const fetchApi = async () => {
             setLoading(true);
 
-            const results = await searchService.search(debounce);
+            const results = await searchService.search(debounceValue);
 
             setLoading(false);
 
@@ -46,7 +45,7 @@ function Search() {
         };
 
         fetchApi();
-    }, [debounce]);
+    }, [debounceValue]);
 
     const handleClear = () => {
         inputElementRef.current.focus();
